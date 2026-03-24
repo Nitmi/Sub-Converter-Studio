@@ -513,6 +513,10 @@ main {
   align-self: end;
 }
 
+.mobile-inline-action {
+  display: none;
+}
+
 .resolved-line {
   margin-top: 12px;
   font-size: 0.88rem;
@@ -717,21 +721,35 @@ main {
   }
 
   .subscription-item {
-    padding-top: 58px;
+    padding-top: 16px;
   }
 
-  .subscription-item .provider-grid {
-    position: static;
+  .subscription-item .field > span {
+    display: none;
   }
 
-  .subscription-item .icon-button-end {
-    position: absolute;
-    top: 14px;
-    right: 14px;
+  .mobile-inline-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .mobile-inline-action > span {
+    font-size: 0.88rem;
+    color: #4f5a68;
+  }
+
+  .mobile-subscription-delete {
     width: 40px;
     height: 40px;
     min-height: 40px;
-    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .desktop-subscription-delete {
+    display: none;
   }
 
   .brand {

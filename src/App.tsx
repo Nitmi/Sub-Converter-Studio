@@ -365,6 +365,19 @@ function App() {
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.24 }}
                   >
+                    <div className="mobile-inline-action">
+                      <span>订阅备注</span>
+                      <button
+                        type="button"
+                        className="icon-button mobile-subscription-delete"
+                        aria-label="删除订阅链接"
+                        onClick={() =>
+                          setProviders((current) => current.filter((provider) => provider.id !== item.id))
+                        }
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
                     <div className="field-grid provider-grid">
                       <label className="field">
                         <span>订阅备注</span>
@@ -384,7 +397,7 @@ function App() {
                       </label>
                       <button
                         type="button"
-                        className="icon-button icon-button-end"
+                        className="icon-button icon-button-end desktop-subscription-delete"
                         aria-label="删除订阅链接"
                         onClick={() =>
                           setProviders((current) => current.filter((provider) => provider.id !== item.id))
