@@ -387,6 +387,7 @@ function App() {
                           placeholder="例如：xx机场"
                         />
                       </label>
+                      <div className="mobile-secondary-label">订阅链接</div>
                       <label className="field field-wide">
                         <span>订阅链接</span>
                         <input
