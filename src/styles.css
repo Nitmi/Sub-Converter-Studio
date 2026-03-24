@@ -513,10 +513,6 @@ main {
   align-self: end;
 }
 
-.mobile-inline-action {
-  display: none;
-}
-
 .resolved-line {
   margin-top: 12px;
   font-size: 0.88rem;
@@ -720,36 +716,35 @@ main {
     align-items: stretch;
   }
 
-  .subscription-item {
-    padding-top: 16px;
-  }
-
   .subscription-item .field > span {
     display: none;
   }
 
-  .mobile-inline-action {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .subscription-item .provider-grid {
+    grid-template-columns: minmax(0, 1fr) 40px;
+    grid-template-areas:
+      "remark delete"
+      "link link";
     gap: 12px;
-    margin-bottom: 12px;
+    align-items: end;
   }
 
-  .mobile-inline-action > span {
-    font-size: 0.88rem;
-    color: #4f5a68;
+  .subscription-item .provider-grid > .field:first-child {
+    grid-area: remark;
   }
 
-  .mobile-subscription-delete {
+  .subscription-item .provider-grid > .field.field-wide {
+    grid-area: link;
+  }
+
+  .subscription-item .desktop-subscription-delete {
+    grid-area: delete;
+    display: inline-flex;
     width: 40px;
     height: 40px;
     min-height: 40px;
-    flex-shrink: 0;
-  }
-
-  .desktop-subscription-delete {
-    display: none;
+    justify-self: end;
+    align-self: end;
   }
 
   .brand {
