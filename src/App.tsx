@@ -116,6 +116,62 @@ const copyText = async (value: string) => {
   await navigator.clipboard.writeText(value);
 };
 
+const buildImportAction = (target: string, generatedUrl: string, filename: string) => {
+  const encodedUrl = encodeURIComponent(generatedUrl);
+  const profileTag = filename.trim() || "Sub Converter";
+  const encodedProfileName = encodeURIComponent(profileTag);
+
+  if (target === "clash" || target === "clashr") {
+    return {
+      label: "一键导入 Clash Verge",
+      href: `clash://install-config?url=${encodedUrl}`,
+    };
+  }
+
+  if (target.startsWith("surge")) {
+    return {
+      label: "一键导入 Surge",
+      href: `surge:///install-config?url=${encodedUrl}`,
+    };
+  }
+
+  if (target === "surfboard") {
+    return {
+      label: "一键导入 Surfboard",
+      href: `surfboard:///install-config?url=${encodedUrl}`,
+    };
+  }
+
+  if (target === "loon") {
+    return {
+      label: "一键导入 Loon",
+      href: `loon://import?sub=${encodedUrl}`,
+    };
+  }
+
+  if (target === "quanx") {
+    const resource = encodeURIComponent(
+      JSON.stringify({
+        server_remote: [`${generatedUrl}, tag=${profileTag}`],
+      }),
+    );
+
+    return {
+      label: "一键导入 Quantumult X",
+      href: `quantumult-x:///add-resource?remote-resource=${resource}`,
+    };
+  }
+
+  if (target === "singbox") {
+    return {
+      label: "一键导入 sing-box",
+      href: `sing-box://import-remote-profile?url=${encodedUrl}#${encodedProfileName}`,
+    };
+  }
+
+  return null;
+};
+
 function App() {
   const [backend, setBackend] = useState(DEFAULT_BACKEND);
   const [target, setTarget] = useState("clash");
@@ -210,9 +266,9 @@ function App() {
     );
   };
 
-  const clashInstallUrl = useMemo(
-    () => `clash://install-config?url=${encodeURIComponent(generatedUrl)}`,
-    [generatedUrl],
+  const importAction = useMemo(
+    () => buildImportAction(target, generatedUrl, filename),
+    [filename, generatedUrl, target],
   );
 
   return (
@@ -252,7 +308,7 @@ function App() {
                 <input value={filename} onChange={(event) => setFilename(event.target.value)} placeholder="" />
               </label>
               <label className="field">
-                <span>目标格式</span>
+                <span>客户端</span>
                 <select value={target} onChange={(event) => setTarget(event.target.value)}>
                   {TARGETS.map((item) => (
                     <option key={item.value} value={item.value}>
@@ -486,15 +542,15 @@ function App() {
                 <div className="action-row">
                   <button
                     type="button"
-                    className="primary-button"
+                    className="secondary-button"
                     onClick={() => handleCopy("url", generatedUrl)}
                   >
                     {copiedField === "url" ? <Check size={16} /> : <Clipboard size={16} />}
                     复制链接
                   </button>
-                  {target === "clash" && (
-                    <a className="secondary-link" href={clashInstallUrl}>
-                      一键导入 Clash / Verge
+                  {importAction && (
+                    <a className="primary-link" href={importAction.href}>
+                      {importAction.label}
                     </a>
                   )}
                 </div>
