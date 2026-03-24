@@ -359,7 +359,7 @@ function App() {
                 {providers.map((item) => (
                   <motion.div
                     key={item.id}
-                    className="stack-item"
+                    className="stack-item subscription-item"
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -12 }}

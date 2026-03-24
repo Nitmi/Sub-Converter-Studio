@@ -716,6 +716,24 @@ main {
     align-items: stretch;
   }
 
+  .subscription-item {
+    padding-top: 58px;
+  }
+
+  .subscription-item .provider-grid {
+    position: static;
+  }
+
+  .subscription-item .icon-button-end {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+    z-index: 2;
+  }
+
   .brand {
     min-width: 0;
     flex: 1;
