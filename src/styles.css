@@ -728,6 +728,10 @@ main {
     display: none;
   }
 
+  .node-item .field > span {
+    display: none;
+  }
+
   .mobile-inline-action {
     display: flex;
     align-items: center;
@@ -748,7 +752,18 @@ main {
     flex-shrink: 0;
   }
 
+  .mobile-node-delete {
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+    flex-shrink: 0;
+  }
+
   .desktop-subscription-delete {
+    display: none;
+  }
+
+  .desktop-node-delete {
     display: none;
   }
 

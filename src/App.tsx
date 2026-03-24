@@ -432,12 +432,25 @@ function App() {
                 {nodeLinks.map((item) => (
                   <motion.div
                     key={item.id}
-                    className="stack-item"
+                    className="stack-item node-item"
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.24 }}
                   >
+                    <div className="mobile-inline-action">
+                      <span>节点链接</span>
+                      <button
+                        type="button"
+                        className="icon-button mobile-node-delete"
+                        aria-label="删除节点链接"
+                        onClick={() =>
+                          setNodeLinks((current) => current.filter((node) => node.id !== item.id))
+                        }
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
                     <div className="field-grid simple-grid">
                       <label className="field field-wide">
                         <span>节点链接</span>
@@ -449,7 +462,7 @@ function App() {
                       </label>
                       <button
                         type="button"
-                        className="icon-button icon-button-end"
+                        className="icon-button icon-button-end desktop-node-delete"
                         aria-label="删除节点链接"
                         onClick={() =>
                           setNodeLinks((current) => current.filter((node) => node.id !== item.id))
