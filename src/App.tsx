@@ -286,6 +286,14 @@ function App() {
             <span>订阅转换链接生成器</span>
           </div>
         </div>
+        <a
+          className="header-link"
+          href="https://github.com/Nitmi/Sub-Converter-Studio"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
       </header>
 
       <main>
